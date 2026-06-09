@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const SKILL_ICONS = {
   'React': '⚛️', 'Django': '💚', 'Python': '🐍', 'JavaScript': '💛',
   'MySQL': '🐬', 'Tailwind': '🎨', 'Node.js': '🟢', 'CSS': '🎨',
-  'HTML': '🏗️', 'Git': '🔀', 'REST API': '📡', 'TypeScript': '🔷',
+  'HTML5': '🏗️', 'Git': '🔀', 'REST API': '🌐', 'TypeScript': '🔷', 'Next.js': '▲', 'Vercel': '🌩️', 'Railway': '🚂', 'Github': '🟣',
 };
 
 export default function About() {
