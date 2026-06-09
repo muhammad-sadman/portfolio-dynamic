@@ -20,7 +20,7 @@ export default function Contact() {
     e.preventDefault();
     setStatus('SENDING');
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/portfolio/contact/', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/portfolio/contact/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

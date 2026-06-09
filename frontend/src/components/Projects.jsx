@@ -1,15 +1,14 @@
-// src/components/Projects.jsx
 import React, { useState, useEffect, useRef } from 'react';
-
+ 
 const CATEGORIES = [
   { key: 'all', label: 'All' },
   { key: 'web', label: 'Web App' },
   { key: 'ml', label: 'ML / AI' },
   { key: 'api', label: 'API' },
 ];
-
+ 
 const CATEGORY_ICONS = { ml: '🤖', api: '📡', web: '🛒' };
-
+ 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
   const [filter, setFilter] = useState('all');
@@ -17,14 +16,14 @@ export default function Projects() {
   const [visible, setVisible] = useState(false);
   const [hoveredId, setHoveredId] = useState(null);
   const sectionRef = useRef(null);
-
+ 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/portfolio/projects/')
+    fetch(`${import.meta.env.VITE_API_URL}/portfolio/projects/`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then(data => { setProjects(Array.isArray(data) ? data : []); setLoading(false); })
       .catch(() => setLoading(false));
   }, []);
-
+ 
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -32,14 +31,14 @@ export default function Projects() {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-
+ 
   const filtered = filter === 'all' ? projects : projects.filter(p => p.category?.toLowerCase() === filter);
-
+ 
   return (
     <section ref={sectionRef} id="projects" className="px-[6vw] py-28 bg-bg relative overflow-hidden">
       {/* Bg decoration */}
       <div className="absolute top-32 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
-
+ 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className={`mb-12 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -53,7 +52,7 @@ export default function Projects() {
               </h2>
               <p className="text-text2 font-light max-w-[460px]">A selection of projects across web apps, APIs, and experiments.</p>
             </div>
-
+ 
             {/* Filter buttons */}
             <div className="flex gap-2 flex-wrap">
               {CATEGORIES.map(cat => (
@@ -72,7 +71,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-
+ 
         {/* Project grid */}
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -111,10 +110,10 @@ export default function Projects() {
                       </span>
                     </div>
                   )}
-
+ 
                   {/* Overlay on hover */}
                   <div className={`absolute inset-0 bg-accent/10 transition-opacity duration-300 ${hoveredId === project.id ? 'opacity-100' : 'opacity-0'}`} />
-
+ 
                   {/* Category badge */}
                   {project.category && (
                     <div className="absolute top-3 right-3 bg-bg/80 backdrop-blur-sm border border-white/10 rounded-full px-2 py-0.5 text-[10px] font-mono text-text2 uppercase">
@@ -122,7 +121,7 @@ export default function Projects() {
                     </div>
                   )}
                 </div>
-
+ 
                 {/* Content */}
                 <div className="p-5">
                   {/* Tags */}
@@ -133,12 +132,12 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-
+ 
                   <h3 className="font-head font-bold text-lg mb-2 text-textCustom group-hover:text-white transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-text2 text-sm font-light mb-5 line-clamp-2 leading-relaxed">{project.description}</p>
-
+ 
                   {/* Links */}
                   <div className="flex items-center gap-4 pt-3 border-t border-white/5">
                     {project.live_link && (
@@ -171,4 +170,4 @@ export default function Projects() {
       </div>
     </section>
   );
-  }
+}

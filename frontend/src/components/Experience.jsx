@@ -7,7 +7,7 @@ export default function Experience() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/portfolio/experience/')
+    fetch(`${import.meta.env.VITE_API_URL}/portfolio/experience/`)
       .then(res => { if (!res.ok) throw new Error(); return res.json(); })
       .then(data => { setExperienceData(Array.isArray(data) ? data : [data]); setLoading(false); })
       .catch(() => setLoading(false));
