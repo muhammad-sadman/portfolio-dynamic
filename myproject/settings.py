@@ -81,16 +81,31 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "portfolio_db",
+#         "USER": "sadmanbinsaleh",
+#         "PASSWORD": "sadman123",
+#         "HOST": "localhost",
+#         "PORT": "3306",
+#     }
+# }
+
+
+# In your settings.py
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "portfolio_db",
-        "USER": "sadmanbinsaleh",
-        "PASSWORD": "sadman123",
-        "HOST": "localhost",
-        "PORT": "3306",
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('portfolio_db'),
+        'USER': os.environ.get('sadmanbinsaleh'),
+        'PASSWORD': os.environ.get('sadman123'),
+        'HOST': os.environ.get('localhost'),
+        'PORT': os.environ.get('3306'),
     }
 }
+
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 
