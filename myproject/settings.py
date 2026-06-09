@@ -112,22 +112,6 @@ DATABASES = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # In your settings.py
 # DATABASES = {
 #     'default': {
