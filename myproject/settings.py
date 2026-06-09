@@ -84,29 +84,51 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'portfolio_db',        # Replace with your actual local schema name
+        'USER': 'SadmanPortfolio',                # <-- CHANGE THIS TO 'root'
+        'PASSWORD': 'sadman1234',                # <-- Try an empty string if using XAMPP/Wamp, or your root password
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+
+# In your settings.py
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.mysql",
-#         "NAME": "portfolio_db",
-#         "USER": "sadmanbinsaleh",
-#         "PASSWORD": "sadman123",
-#         "HOST": "localhost",
-#         "PORT": "3306",
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('portfolio_db'),
+#         'USER': os.environ.get('Sadman Bin Saleh'),
+#         'PASSWORD': os.environ.get('sadman123'),
+#         'HOST': os.environ.get('localhost', '127.0.0.1'),
+#         'PORT': os.environ.get('3306'),
 #     }
 # }
 
 
-# In your settings.py
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('portfolio_db'),
-        'USER': os.environ.get('sadmanbinsaleh'),
-        'PASSWORD': os.environ.get('sadman123'),
-        'HOST': os.environ.get('localhost'),
-        'PORT': os.environ.get('3306'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.environ.get('portfolio_db', 'your_default_db_name'),
+#         'USER': os.environ.get('DB_USER', 'root'),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+#         'HOST': os.environ.get('DB_HOST', '127.0.0.1'),  # <--- Fallback prevents the 'NoneType' crash
+#         'PORT': os.environ.get('DB_PORT', '3306'),
+#     }
+# }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
