@@ -4,6 +4,7 @@ const SKILL_ICONS = {
   'React': '⚛️', 'Django': '💚', 'Python': '🐍', 'JavaScript': '💛',
   'MySQL': '🐬', 'Tailwind': '🎨', 'Node.js': '🟢', 'CSS': '🎨',
   'HTML5': '🏗️', 'Git': '🔀', 'REST API': '🌐', 'TypeScript': '🔷', 'Next.js': '▲', 'Vercel': '🌩️', 'Railway': '🚂', 'GitHub': '🟣',
+  'PHP': '🐘', 
 };
 
 export default function About() {
