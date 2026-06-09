@@ -84,16 +84,49 @@ WSGI_APPLICATION = "myproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'portfolio_db',        # Replace with your actual local schema name
+#         'USER': 'SadmanPortfolio',                # <-- CHANGE THIS TO 'root'
+#         'PASSWORD': 'sadman1234',                # <-- Try an empty string if using XAMPP/Wamp, or your root password
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
+
+
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfolio_db',        # Replace with your actual local schema name
-        'USER': 'SadmanPortfolio',                # <-- CHANGE THIS TO 'root'
-        'PASSWORD': 'sadman1234',                # <-- Try an empty string if using XAMPP/Wamp, or your root password
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': os.environ.get('DB_NAME', 'portfolio_db'),
+        'USER': os.environ.get('DB_USER', 'SadmanPortfolio'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'sadman1234'),
+        # Fallback to localhost string if the environment variable is missing
+        'HOST': os.environ.get('DB_HOST', '127.0.0.1'), 
+        'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # In your settings.py
 # DATABASES = {
