@@ -119,7 +119,7 @@ DATABASES = {
         'USER': os.environ.get('DB_USER', 'SadmanPortfolio'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'sadman1234'),
         # Fallback to the docker service name 'db' instead of localhost
-        'HOST': os.environ.get('DB_HOST', 'localhost'), 
+        'HOST': os.environ.get('DB_HOST', '127.0.0.1'), 
         'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }

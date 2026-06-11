@@ -1,7 +1,17 @@
 services:
   web:
+    build: .
+    ports:
+      - "8000:8000"
     environment:
       - DB_HOST=db
+      - DB_NAME=portfolio_db
+      - DB_USER=SadmanPortfolio
+      - DB_PASSWORD=sadman1234
+    depends_on:
+      db:
+        condition: service_healthy
+
   db:
     image: mysql:8
     environment:
@@ -9,3 +19,8 @@ services:
       - MYSQL_USER=SadmanPortfolio
       - MYSQL_PASSWORD=sadman1234
       - MYSQL_ROOT_PASSWORD=""
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
