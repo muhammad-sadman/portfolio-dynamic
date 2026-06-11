@@ -119,11 +119,13 @@ DATABASES = {
         'USER': os.environ.get('DB_USER', 'SadmanPortfolio'),
         'PASSWORD': os.environ.get('DB_PASSWORD', 'sadman1234'),
         # Fallback to the docker service name 'db' instead of localhost
-        'HOST': os.environ.get('DB_HOST', 'db'), 
+        'HOST': os.environ.get('DB_HOST', 'localhost'), 
         'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
 print(f"DEBUG: Connecting to database host: {DATABASES['default']['HOST']}")
+
+
 
 
 # In your settings.py

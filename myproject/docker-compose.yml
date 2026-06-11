@@ -1,0 +1,11 @@
+services:
+  web:
+    environment:
+      - DB_HOST=db
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_DATABASE=portfolio_db
+      - MYSQL_USER=SadmanPortfolio
+      - MYSQL_PASSWORD=sadman1234
+      - MYSQL_ROOT_PASSWORD=""
